@@ -25,45 +25,5 @@ client.on('guildMemberRemove', member => {
     channel.sendEmbed(embed);
 })
 
-client.on('message', message => {
-    if(message.content === PREFIX + "teamspeak"){
-        var embed = new Discord.RichEmbed()
-            .setColor("0x0000FF")
-            .setTitle(":small_orange_diamond: Voici le lien du teamspeak :small_orange_diamond:")
-            .setDescription(":pushpin: | 51.254.87.48  ")
-        message.channel.sendEmbed(embed);
-    }
-})
-
-client.on('message', message => {
-    if(message.content === PREFIX + "ts"){
-        var embed = new Discord.RichEmbed()
-            .setColor("0x0000FF")
-            .setTitle(":small_orange_diamond: Voici le lien du teamspeak :small_orange_diamond:")
-            .setDescription(":pushpin: | 51.254.87.48  ")
-        message.channel.sendEmbed(embed);
-    }
-})
-
-client.on('message', message => {
-    if(message.content === PREFIX + "forum"){
-        var embed = new Discord.RichEmbed()
-            .setColor("0x0000FF")
-            .setTitle(":small_orange_diamond: Voici le lien du forum :small_orange_diamond:")
-            .setDescription(":pushpin: | 51.254.87.48/index.php?  ")
-        message.channel.sendEmbed(embed);
-    }
-})
-
-client.on('message', message => {
-    if(message.content === PREFIX + "serv"){
-        var embed = new Discord.RichEmbed()
-            .setColor("0x0000FF")
-            .setTitle(":small_orange_diamond: Voici l'adresse du serveur :small_orange_diamond:")
-            .setDescription(":pushpin: | 51.254.87.48:2302")
-        message.channel.sendEmbed(embed);
-    }
-})
-
 /* Connexion */
 client.login(process.env.TOKEN);
