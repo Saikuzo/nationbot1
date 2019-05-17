@@ -8,7 +8,7 @@ client.on('ready', () => {
 })
 
 client.on('guildMemberAdd', member => {
-    const channel = member.guild.channels.find(ch => ch.id === "569972767672238105")
+    const channel = member.guild.channels.find(ch => ch.id === "578820344601772082")
     if(!channel)return;
     var embed = new Discord.RichEmbed()
     .setColor("0x00FF40")
@@ -17,7 +17,7 @@ client.on('guildMemberAdd', member => {
 })
 
 client.on('guildMemberRemove', member => {
-    const channel = member.guild.channels.find(ch => ch.id === "569972767672238105")
+    const channel = member.guild.channels.find(ch => ch.id === "578820344601772082")
     if(!channel)return;
     var embed = new Discord.RichEmbed()
         .setColor("0xFF0000")
