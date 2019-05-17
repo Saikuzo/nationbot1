@@ -66,4 +66,4 @@ client.on('message', message => {
 })
 
 /* Connexion */
-client.login("NTc2NzczMDUxNzYxMjk1NDAw.XNbbiw.eWpHurGiBixHrnHSFiHujk_If_k");
+client.login(process.env.TOKEN);
