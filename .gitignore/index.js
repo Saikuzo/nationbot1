@@ -1,48 +1,56 @@
+// Require
 const Discord = require('discord.js');
-const client = new Discord.Client();
+const Client = new Discord.Client();
 
-//  Partie Music
-var dispatcher;
-
-// Partie Variable
+// Variable
 const PREFIX = "!";
 
-// Fonction
+// Message Console
 
-function sendError(message, description) {
-    message.channel.sendEmbed({embed: {
-        color: 15158332,
-        description: ':x: ' + description 
-    }});
-}
-
-
-
-client.on('ready', () => {
-    console.log(`Client connecté sous ${client.user.tag}!`);
+Client.on('ready', () => {
+    console.log(`Client connecté sous ${Client.user.tag}!`);
 })
 
-client.on('guildMemberAdd', member => {
-    const channel = member.guild.channels.find(ch => ch.id === "578820344601772082")
-    const role = member.guild.roles.find(roles => roles.id ==='578987733415100445')
+// Bienvenue
+Client.on('guildMemberAdd', member => {
+    const channel = member.guild.channels.find(ch => ch.id === "581845204084981760")
+    const role = member.guild.roles.find(roles => roles.id ==='553268167938670603')
     if(!channel)return;
     var embed = new Discord.RichEmbed()
-    .setColor("0x00FF40")
-    .setDescription(`:small_orange_diamond: Bienvenue à toi ${member}! sur le serveur discord de Nation :wink: :v:`)
+    .setColor("0x00FF00")
+    .setDescription(`🔸 Bienvenue à toi ${member}! sur le serveur discord de Nation | E-Sport ✨ 💖`)
     channel.sendEmbed(embed);
     member.addRole(role);
 })
 
-client.on('guildMemberRemove', member => {
-    const channel = member.guild.channels.find(ch => ch.id === "578820344601772082")
+Client.on('guildMemberRemove', member => {
+    const channel = member.guild.channels.find(ch => ch.id === "581845204084981760")
     if(!channel)return;
     var embed = new Discord.RichEmbed()
         .setColor("0xFF0000")
-        .setDescription(`:small_orange_diamond: Aurevoir ${member}! a plus tard sur le serveur discord de Nation :sob: :call_me:`)
+        .setDescription(`🔸 Aurevoir ${member}! a plus tard sur le serveur discord de Nation ✨ 😭`)
     channel.sendEmbed(embed);
 })
 
-client.on('message', message => {
+// Contact
+
+Client.on('message', message => {
+    if(message.content.startsWith(PREFIX + 'send')) {
+        message.guild.send('Rejoint ce discord : https://discord.gg/hwadXHk ')
+    }
+})
+
+Client.on('message', message => {
+    if (message.content.startsWith(PREFIX + "contact")) {
+    var embed = new Discord.RichEmbed()
+        .setColor("#58FAF4")
+        .setDescription("Contactez nous par E-Mail avec : nationesport.pro@gmail.com 📧")
+    message.channel.send(embed);
+    }
+})
+
+// Sondage
+Client.on('message', message => {
     if (message.content.startsWith(PREFIX + "sondage")) {
         if(message.author.id === "315494374429556737"){
             let args = message.content.split(" ").slice(1);
@@ -52,7 +60,7 @@ client.on('message', message => {
                 .addField(thingToEcho, "Répondre avec ✅ ou ❌")
                 .setColor("0xB40404")
                 .setTimestamp()
-            message.guild.channels.find(ch => ch.id === "578308716168871938").sendEmbed(embed)
+            message.guild.channels.find(ch => ch.id === "581845517219266571").sendEmbed(embed)
             .then(function (message) {
                 message.react("✅")
                 message.react("❌")
@@ -63,47 +71,6 @@ client.on('message', message => {
             }
     }
 })
-
-/* client.on('message', message => {
-    if(message.content[0] === PREFIX){
-        let splitMessage = message.content.split(" ");
-        if(splitMessage[0] === '!play') {
-            if(splitMessage.length === 2)
-            {
-                
-                if(message.member.voiceChannel)
-                {
-                    message.member.voiceChannel.join().then(connection => {
-                        dispatcher = connection.playArbitraryInput(splitMessage[1]);
-
-                        dispatcher.on('error', e => {
-                            console.log(e);
-                        });
-
-                        dispatcher.on('end', e => {
-                            dispatcher = undefined;
-                            console.log('Fin du son');
-                        });
-                    }).catch(console.log);
-                }
-                else
-                send.message.channel('Erreur, Rejoingez un salon vocal ! ')
-            }
-            else
-                sendError(message, 'Erreur, problème dans les paramètres');
-        }
-        else if(splitMessage[0] === '!pause') {
-            if(dispatcher !== undefined)
-                dispatcher.pause();
-        }
-        else if(splitMessage[0] === '!resume') {
-            if(dispatcher !== undefined)
-                dispatcher.resume();
-        }
-    }
-});
-
-*/
 
 /* Connexion */
 client.login(process.env.TOKEN);
